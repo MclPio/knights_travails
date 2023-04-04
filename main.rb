@@ -26,8 +26,18 @@ class Knight
   end
 
   def possible_moves
-    [[1, 2], [-1, 2], [2, 1], [-2, 1],
-     [-1, -2], [-2, -1], [-2, 1], [-1, 2]]
+    new_list = []
+    knight_moves = [[1, 2], [-1, 2], [2, 1], [-2, 1], [-1, -2], [-2, -1], [-2, 1], [-1, 2]]
+    knight_moves.each do |element|
+      x = current_coordinate[0] + element[0]
+      y = current_coordinate[1] + element[1]
+      if x <= 7 && x >= 0
+        if y <= 7 && y >= 0
+          new_list << [x, y]
+        end
+      end
+    end
+    new_list
   end
 end
 
@@ -38,7 +48,4 @@ knight = Knight.new
 # board.adj_list[3] << 3 # step two of movement which is to place knight on new coordinates
 board.add_piece(knight.current_coordinate)
 p board.adj_list
-board.add_piece([4,2])
-board.remove_piece([4,2])
-board.remove_piece([2,1])
-p board.adj_list
+p knight.possible_moves
