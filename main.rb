@@ -26,18 +26,9 @@ class Knight
   end
 
   def possible_moves
-    new_list = []
     knight_moves = [[1, 2], [-1, 2], [2, 1], [-2, 1], [-1, -2], [-2, -1], [-2, 1], [-1, 2]]
-    knight_moves.each do |element|
-      x = current_coordinate[0] + element[0]
-      y = current_coordinate[1] + element[1]
-      if x <= 7 && x >= 0
-        if y <= 7 && y >= 0
-          new_list << [x, y]
-        end
-      end
-    end
-    new_list
+    knight_moves.map { |dx, dy| [current_coordinate[0] + dx, current_coordinate[1] + dy] }
+                .select { |x, y| x.between?(0, 7) && y.between?(0, 7) }
   end
 end
 
