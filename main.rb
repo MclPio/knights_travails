@@ -25,9 +25,9 @@ class Knight
     @current_coordinate = current_coordinate
   end
 
-  def possible_moves
+  def possible_moves(coordinates = current_coordinate)
     knight_moves = [[1, 2], [-1, 2], [2, 1], [-2, 1], [-1, -2], [-2, -1], [-2, 1], [-1, 2]]
-    knight_moves.map { |dx, dy| [current_coordinate[0] + dx, current_coordinate[1] + dy] }
+    knight_moves.map { |dx, dy| [coordinates[0] + dx, coordinates[1] + dy] }
                 .select { |x, y| x.between?(0, 7) && y.between?(0, 7) }
   end
 end
