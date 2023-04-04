@@ -3,37 +3,10 @@
 # knight_moves
 
 class Board
-  attr_accessor :adj_mtrx
+  attr_accessor :adj_list
 
   def initialize()
-    @adj_mtrx =
-    [
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0]
-    ]
-  end
-
-  def to_s
-    "    #{adj_mtrx[0]}
-    #{adj_mtrx[1]}
-    #{adj_mtrx[2]}
-    #{adj_mtrx[3]}
-    #{adj_mtrx[4]}
-    #{adj_mtrx[5]}
-    #{adj_mtrx[6]}
-    #{adj_mtrx[7]}"
-  end
-
-  def update(coor_array)
-    y = coor_array[1]
-    x = coor_array[0]
-    adj_mtrx[y][x] = 1
+    @adj_list = [[], [], [], [], [], [], [], []]
   end
 end
 
@@ -52,5 +25,7 @@ end
 
 board = Board.new
 knight = Knight.new([2, 1])
-board.update(knight.current_coordinate)
-puts board
+board.adj_list[2] << 1 # placing the knight
+board.adj_list[2].pop(1) # step one of movement which is to delete old coordinates
+board.adj_list[3] << 3 # step two of movement which is to place knight on new coordinates
+p board.adj_list
