@@ -1,6 +1,3 @@
-# knight
-# Treat all possible moves the knight could make as children in a tree
-
 class Node
   attr_accessor :data, :children, :parent
 
@@ -52,7 +49,7 @@ class Knight
       if node.data == destination
         move_list = node.get_parents.unshift(node.data).reverse
         count = move_list.count - 1
-        p "You made it in #{count} moves! Here's your path:"
+        puts "You made it in #{count} moves! Here's your path:"
         move_list.each { |item| p item}
         return move_list
       end
@@ -64,6 +61,7 @@ class Knight
   end
 end
 
+# Tests
 knight = Knight.new
 
 knight.knight_moves([0, 0], [2, 7])
