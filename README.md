@@ -5,8 +5,6 @@ Usage
 
 To use this program, first instantiate a Knight object:
 
-arduino
-
 knight = Knight.new
 
 Then, call the knight_moves method on the object with the starting and ending coordinates as arguments:
