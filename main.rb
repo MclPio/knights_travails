@@ -1,22 +1,5 @@
-# game_board
 # knight
-# knight_moves
-
-class Board
-  attr_accessor :adj_list
-
-  def initialize
-    @adj_list = [[], [], [], [], [], [], [], []]
-  end
-
-  def add_piece(coordinates)
-    adj_list[coordinates[0]] << coordinates[1]
-  end
-
-  def remove_piece(coordinates)
-    adj_list[coordinates[0]].pop(coordinates[1])
-  end
-end
+# Treat all possible moves the knight could make as children in a tree
 
 class Knight
   attr_accessor :current_coordinate
@@ -32,11 +15,10 @@ class Knight
   end
 end
 
-board = Board.new
 knight = Knight.new
-# board.adj_list[2] << 1 # placing the knight
-# board.adj_list[2].pop(1) # step one of movement which is to delete old coordinates
-# board.adj_list[3] << 3 # step two of movement which is to place knight on new coordinates
-board.add_piece(knight.current_coordinate)
-p board.adj_list
 p knight.possible_moves
+
+# Don't think about graphs right now - just abstract away the core of the problem, which is finding possible 
+# moves from a given position.  I'd recommend that you pick a position on the board and then pick a target 
+# position (one that's easy to get to). From there, draw out the possible moves from each position until you
+# get there yourself on paper.  You can connect each possible move with a line or edge (hint).
