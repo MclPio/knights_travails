@@ -30,7 +30,7 @@ class Knight
   end
 
   def possible_moves(coordinates = current_coordinate)
-    knight_moves = [[1, 2], [-1, 2], [2, 1], [-2, 1], [-1, -2], [-2, -1], [2, 1], [1, -2]]
+    knight_moves = [[1, 2], [-1, 2], [2, 1], [-2, 1], [-1, -2], [-2, -1], [2, -1], [1, -2]]
     knight_moves.map { |dx, dy| [coordinates[0] + dx, coordinates[1] + dy] }
                 .select { |x, y| x.between?(0, 7) && y.between?(0, 7) }
   end
@@ -42,7 +42,7 @@ class Knight
     node
   end
 
-  def bfs(root, destination)
+  def knight_moves(root, destination)
     queue = [construct_tree(root)]
     visited = []
 
@@ -66,19 +66,19 @@ end
 
 knight = Knight.new
 
-knight.bfs([0, 0], [2, 7])
-knight.bfs([7, 0], [5, 6])
-knight.bfs([2, 2], [4, 4])
-knight.bfs([4, 6], [7, 3])
-knight.bfs([3, 3], [6, 6])
-knight.bfs([1, 1], [5, 2])
-knight.bfs([6, 5], [2, 0])
-knight.bfs([5, 7], [1, 1])
-knight.bfs([0, 2], [5, 7])
-knight.bfs([7, 5], [0, 1])
-knight.bfs([3, 6], [1, 3])
-knight.bfs([2, 5], [6, 2])
-knight.bfs([4, 4], [7, 6])
-knight.bfs([6, 3], [3, 0])
-knight.bfs([0, 6], [4, 1])
-knight.bfs([1, 7], [6, 2])
+knight.knight_moves([0, 0], [2, 7])
+knight.knight_moves([7, 0], [5, 6])
+knight.knight_moves([2, 2], [4, 4])
+knight.knight_moves([4, 6], [7, 3])
+knight.knight_moves([3, 3], [6, 6])
+knight.knight_moves([1, 1], [5, 2])
+knight.knight_moves([6, 5], [2, 0])
+knight.knight_moves([5, 7], [1, 1])
+knight.knight_moves([0, 2], [5, 7])
+knight.knight_moves([7, 5], [0, 1])
+knight.knight_moves([3, 6], [1, 3])
+knight.knight_moves([2, 5], [6, 2])
+knight.knight_moves([4, 4], [7, 6])
+knight.knight_moves([6, 3], [3, 0])
+knight.knight_moves([0, 6], [4, 1])
+knight.knight_moves([1, 7], [6, 2])
