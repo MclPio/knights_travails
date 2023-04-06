@@ -1,3 +1,7 @@
+# class Knight
+# Knight#possible_moves returns possbile moves based on current coordinates, argument optional
+# Knight#construct_tree creates a node class based on input
+# Knight#knight_moves returns moves to make to get to destination on a chessboard using BFS
 class Knight
   attr_accessor :current_coordinate
 
@@ -22,11 +26,11 @@ class Knight
     queue = [construct_tree(root)]
     visited = []
 
-    while !queue.empty?
+    until queue.empty?
       node = queue.shift
       parent = node
       if node.data == destination
-        move_list = node.get_parents.unshift(node.data).reverse
+        move_list = node.list_parents.unshift(node.data).reverse
         count = move_list.count - 1
         puts "You made it in #{count} moves! Here's your path:"
         move_list.each { |item| p item}
